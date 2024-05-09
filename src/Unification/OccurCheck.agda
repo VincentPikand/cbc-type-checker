@@ -31,3 +31,12 @@ check x (s fork t) = do
   s' <- check x s
   t' <- check x t
   just (s' fork t')
+
+_for_ 
+  : {n : ℕ} 
+  → (t' : Term n) → (x : Fin (suc n))
+  ------------------------------------
+  → Fin (suc n) → Term n
+(t' for x) y with thick x y
+... | just y' = ι y'
+... | nothing = t'
