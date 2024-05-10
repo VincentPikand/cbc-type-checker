@@ -16,12 +16,10 @@ thick zero (suc y) = just y -- y > x
 thick {zero} (suc ()) zero
 thick {suc m} (suc x) zero = just zero -- y < x
 thick {zero} (suc ()) (suc y)
--- thick {suc m} (suc x) (suc y) with thick {m} x y
--- ... | just x′ = just (suc x′)
--- ... | nothing = nothing -- x = y
 thick {suc m} (suc x) (suc y) = do
   x' ← thick {m} x y
   just (suc x')
+
 check : {n : ℕ} → (x : Fin (suc n)) → (t : Term (suc n)) → Maybe (Term n)
 check x (ι y) = do
   x' <- thick x y
