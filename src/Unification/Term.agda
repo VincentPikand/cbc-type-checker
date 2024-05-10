@@ -9,19 +9,19 @@ data Term_ (n : ℕ) : Set where
   leaf : Term n
   _fork_ : (s t : Term n) → Term n
 
--- ◃ turns a renaming into a substitution
+-- ▹ turns a renaming into a substitution
 ▹ : {m n : ℕ} → (r : Fin m → Fin n) → Fin m → Term n
 ▹ r = ι ∘ r
 
 -- ◃ applies a substitution to a term
-_◃_ : {m n : ℕ} → (f : Fin m → Term n) → Term m → Term n
+_◃_ : {m n : ℕ} → (Fin m → Term n) → Term m → Term n
 f ◃ (ι x) = f x
 f ◃ leaf = leaf
 f ◃ (s fork t) = (f ◃ s) fork (f ◃ t)
 
-
-
-
-
-
- 
+_◇_ 
+  : {m n l : ℕ} 
+  → (f : Fin m → Term n) → (g : Fin l → Term m)
+  ----------------------------------------------
+  → Fin l → Term n
+f ◇ g = λ x → f ◃ (g x)
