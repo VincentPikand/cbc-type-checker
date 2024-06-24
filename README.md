@@ -9,3 +9,7 @@ To get the code working, follow these steps:
 1. Install Agda by following [the instruction on the website](https://agda.readthedocs.io/en/latest/getting-started/installation.html).
 2. Install the `standard-library` using the [installation guide](https://github.com/agda/agda-stdlib/blob/master/doc/installation-guide.md).
 3. To test that everything works, compile the `ConstraintBasedTypeInference.agda` file.
+
+
+Built ontop of:
+- https://github.com/andreasabel/constraint-based-type-inference
